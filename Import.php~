@@ -47,32 +47,32 @@ class MyDB extends SQLite3
     }
 }
 
- $schoolyear = $decoded[0]->schoolyear;
- $districtcode = $decoded[0]->districtcode;
- $schoolcode = $decoded[0]->schoolcode;
- $districtname = $decoded[0]->districtname;
- $districttype = $decoded[0]->districttype;
- $schoolname = $decoded[0]->schoolname;
- $schooltype = $decoded[0]->schooltype;
- $street1 = $decoded[0]->street1;
- $street2 = $decoded[0]->street2;
- $city = $decoded[0]->city;
- $state = $decoded[0]->state;
- $zip = $decoded[0]->zip;
- $county = $decoded[0]->county;
- $lowestgrade = $decoded[0]->lowestgrade;
- $highestgrade = $decoded[0]->highestgrade;
- $educationlevel = $decoded[0]->educationlevel;
- $hasec = $decoded[0]->hasec;
- $haspk = $decoded[0]->haspk;
- $haskn = $decoded[0]->haskn;
- $haselementarygrade = $decoded[0]->haselementarygrade;
- $hasmiddlegrade = $decoded[0]->hasmiddlegrade;
- $hashighgrade = $decoded[0]->hashighgrade;
- $isungraded = $decoded[0]->isungraded;
- $geocodedlocation = $decoded[0]->geocodedlocation;
+ $schoolyear = SQLite3::escapeString($decoded[0]->schoolyear);
+ $districtcode = SQLite3::escapeString($decoded[0]->districtcode);
+ $schoolcode = SQLite3::escapeString($decoded[0]->schoolcode);
+ $districtname = SQLite3::escapeString($decoded[0]->districtname);
+ $districttype = SQLite3::escapeString($decoded[0]->districttype);
+ $schoolname = SQLite3::escapeString($decoded[0]->schoolname);
+ $schooltype = SQLite3::escapeString($decoded[0]->schooltype);
+ $street1 = SQLite3::escapeString($decoded[0]->street1);
+ $street2 = SQLite3::escapeString($decoded[0]->street2);
+ $city = SQLite3::escapeString($decoded[0]->city);
+ $state = SQLite3::escapeString($decoded[0]->state);
+ $zip = SQLite3::escapeString($decoded[0]->zip);
+ $county = SQLite3::escapeString($decoded[0]->county);
+ $lowestgrade = SQLite3::escapeString($decoded[0]->lowestgrade);
+ $highestgrade = SQLite3::escapeString($decoded[0]->highestgrade);
+ $educationlevel = SQLite3::escapeString($decoded[0]->educationlevel);
+ $hasec = SQLite3::escapeString($decoded[0]->hasec);
+ $haspk = SQLite3::escapeString($decoded[0]->haspk);
+ $haskn = SQLite3::escapeString($decoded[0]->haskn);
+ $haselementarygrade = SQLite3::escapeString($decoded[0]->haselementarygrade);
+ $hasmiddlegrade = SQLite3::escapeString($decoded[0]->hasmiddlegrade);
+ $hashighgrade = SQLite3::escapeString($decoded[0]->hashighgrade);
+ $isungraded = SQLite3::escapeString($decoded[0]->isungraded);
+ $geocodedlocation = SQLite3::escapeString($decoded[0]->geocoded_location_address) + SQLite3::escapeString($decoded[0]->geocoded_location_city) + SQLite3::escapeString($decoded[0]->geocoded_location_state) + SQLite3::escapeString($decoded[0]->geocoded_location_zip);
 
- $insert = "REPLACE INTO import_school_directory (SchoolYear, DistrictCode, SchoolCode, DistrictName, DistrictType, SchoolName, SchoolType, Street1, Street2, City, State, Zip, County, LowestGrade, HighestGrade, EducationLevel, HasEC, HasPK, HasKN, HasELementaryGrade, HasMiddleGrade, HasHighGrade, IsUngraded, GeocodedLocation ) VALUES ($schoolyear, $districtcode, $schoolcode, $districtname, $schooltype, $street1, $street2, $city, $state, $zip, $county, $lowestgrade, $highestgrade, $educationlevel, $hasec, $haspk, $haskn, $haselementarygrade, $hasmiddlegrade, $hashighgrade, $isungraded, $geocodedlocation) "; 
+ $insert = "REPLACE INTO import_school_directory (SchoolYear, DistrictCode, SchoolCode, DistrictName, DistrictType, SchoolName, SchoolType, Street1, Street2, City, State, Zip, County, LowestGrade, HighestGrade, EducationLevel, HasEC, HasPK, HasKN, HasELementaryGrade, HasMiddleGrade, HasHighGrade, IsUngraded, GeocodedLocation ) VALUES ('$schoolyear', '$districtcode', '$schoolcode', '$districtname', '$districttype', '$schoolname', '$schooltype', '$street1', '$street2', '$city', '$state', '$zip', '$county', '$lowestgrade', '$highestgrade', '$educationlevel', '$hasec', '$haspk', '$haskn', '$haselementarygrade', '$hasmiddlegrade', '$hashighgrade', '$isungraded', '$geocodedlocation') "; 
 
 
   try {
