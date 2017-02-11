@@ -1,18 +1,5 @@
 <?php
 
-
-       //$service_url = 'https://data.delaware.gov/resource/f6a3-crpj.json';
-       //$curl = curl_init($service_url);
-       //curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-       //curl_setopt($curl, CURLOPT_POST, true);
-       //$curl_response = curl_exec($curl);
-       //curl_close($curl);
-
-       //$jsonObject = jsondecode($curl_response);
-
-
-
-       //next example will recieve all messages for specific conversation
        $service_url = 'https://data.delaware.gov/resource/f6a3-crpj.json';
        $curl = curl_init($service_url);
        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -21,7 +8,7 @@
        if ($curl_response === false) {
          $info = curl_getinfo($curl);
          curl_close($curl);
-         die('error occured during curl exec. Additional info: ' . var_export($info));
+         die('error occurred during curl exec. Additional info: ' . var_export($info));
        }
        curl_close($curl);
        
@@ -46,6 +33,9 @@ class MyDB extends SQLite3
         $this->open('OpenDataDE.db');
     }
 }
+
+ foreach 
+
 
  $schoolyear = SQLite3::escapeString($decoded[0]->schoolyear);
  $districtcode = SQLite3::escapeString($decoded[0]->districtcode);
